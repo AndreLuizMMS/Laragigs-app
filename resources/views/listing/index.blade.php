@@ -16,4 +16,7 @@
     @endforeach
     </div>
   </x-card-wrapper>
+  <div class="mt-4">
+    {{ $listings->links() }}
+  </div>
 </x-layout>

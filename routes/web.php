@@ -16,8 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::controller(ListingController::class)->group(function () {
-    Route::get('/', 'index');
-    Route::get('/listing/{id}', 'singleListing');
-    Route::post('new-job/create', 'createPost');
-    Route::view('/new-job', 'listing.create');
+	Route::get('/', 'index');
+	Route::get('/listing/{id}', 'singleListing');
+	Route::post('new-job/create', 'createPost');
+	Route::view('/new-job', 'listing.create');
+
+	Route::get('/edit-job/{id}', function ($id) {
+		$listingItem = Listing::find($id);
+		return view('listing.edit-listing', ['listingItem' => $listingItem]);
+	});
+	Route::post('/edit-job/{id}', 'edit');
+	Route::delete('/delete-job/{id}', 'delete');
+});
+
+Route::controller(UserController::class)->group(function () {
+	Route::view('/register', 'user.register');
 });

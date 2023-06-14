@@ -19,6 +19,6 @@ class DatabaseSeeder extends Seeder {
         //     'email' => 'test@example.com',
         // ]);]
 
-        Listing::factory(100)->create();
+        Listing::factory(10)->create();
     }
 }
