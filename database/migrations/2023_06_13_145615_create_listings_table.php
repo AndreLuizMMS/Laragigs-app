@@ -20,6 +20,8 @@ return new class extends Migration {
             $table->string('website');
             $table->longText('description');
             $table->string('logo_path')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

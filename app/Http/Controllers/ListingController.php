@@ -39,9 +39,13 @@ class ListingController extends Controller {
       "tags" => 'required',
       "description" => 'required',
     ]);
+
     if ($req->hasFile('logo')) {
       $incomingFields['logo_path'] = $req->file('logo')->store('logos', 'public');
+    } else {
+      $incomingFields['logo_path'] = '/images/no-image.png';
     }
+    $incomingFields['user_id'] = auth()->user()->id;
 
     Listing::create($incomingFields);
     return redirect('/')->with('message', 'Job posted successfully');
